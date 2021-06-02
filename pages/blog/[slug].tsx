@@ -8,6 +8,9 @@ import { getMDXComponent } from 'mdx-bundler/client'
 import date from 'date-and-time'
 
 import { Head } from 'components/Head'
+import { Main } from 'components/design/Main'
+import { Header } from 'components/Header'
+import { Footer } from 'components/Footer'
 
 const fs = fsWithCallbacks.promises
 const postsPath = path.join(process.cwd(), 'posts')
@@ -26,17 +29,22 @@ const BlogPost: React.FC<BlogPostProps> = (props) => {
   return (
     <>
       <Head />
-      <div className='flex flex-col mx-10'>
-        <div className='flex flex-col items-center my-8'>
-          <h1 className='text-3xl font-semibold'>{frontmatter.title}</h1>
-          <p className='mt-2'>
-            {date.format(new Date(frontmatter.createdAt), 'MMMM D, YYYY', true)}
-          </p>
+
+      <Header />
+      <Main>
+        <div className='flex flex-col mx-10'>
+          <div className='flex flex-col items-center my-8'>
+            <h1 className='text-3xl font-semibold'>{frontmatter.title}</h1>
+            <p className='mt-2'>
+              {date.format(new Date(frontmatter.createdAt), 'MMMM D, YYYY')}
+            </p>
+          </div>
+          <div>
+            <Component />
+          </div>
         </div>
-        <div>
-          <Component />
-        </div>
-      </div>
+      </Main>
+      <Footer />
     </>
   )
 }

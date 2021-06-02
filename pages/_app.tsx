@@ -10,9 +10,6 @@ import '@fontsource/montserrat/500.css'
 import '@fontsource/montserrat/600.css'
 import '@fontsource/montserrat/700.css'
 
-import { Header } from 'components/Header'
-import { Footer } from 'components/Footer'
-
 const universalCookie = new UniversalCookie()
 
 /** how long in seconds, until the cookie expires (10 years) */
@@ -30,11 +27,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <ThemeProvider attribute='class' defaultTheme='dark'>
-      <Header />
-      <main className='flex flex-1 flex-col md:mx-auto md:max-w-4xl lg:max-w-7xl'>
-        <Component {...pageProps} />
-      </main>
-      <Footer />
+      <Component {...pageProps} />
     </ThemeProvider>
   )
 }

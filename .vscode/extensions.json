@@ -6,7 +6,9 @@
     "divlo.vscode-styled-jsx-syntax",
     "divlo.vscode-styled-jsx-languageserver",
     "bradlc.vscode-tailwindcss",
+    "csstools.postcss",
     "mikestead.dotenv",
+    "silvenon.mdx",
     "coenraads.bracket-pair-colorizer",
     "davidanson.vscode-markdownlint"
   ]

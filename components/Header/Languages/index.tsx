@@ -6,7 +6,7 @@ import { Arrow } from './Arrow'
 import { LanguageFlag } from './LanguageFlag'
 import { locales } from 'i18n.json'
 
-export const Language: React.FC = () => {
+export const Languages: React.FC = () => {
   const { lang: currentLanguage } = useTranslation()
   const [hiddenMenu, setHiddenMenu] = useState(true)
 

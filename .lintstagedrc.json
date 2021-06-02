@@ -5,7 +5,7 @@
     "eslint --fix",
     "jest --findRelatedTests"
   ],
-  "*.{css,yml,json}": ["prettier --write"],
+  "*.{css,yml,json,mdx}": ["prettier --write"],
   "*.{md}": ["prettier --write", "markdownlint --dot --fix"],
   "./Dockerfile": ["dockerfilelint"]
 }
