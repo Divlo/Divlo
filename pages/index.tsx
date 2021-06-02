@@ -47,6 +47,14 @@ const Home: React.FC = () => {
           <Portfolio />
         </Section>
       </RevealFade>
+
+      <style jsx global>
+        {`
+          #__next {
+            display: block;
+          }
+        `}
+      </style>
     </>
   )
 }
