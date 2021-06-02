@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import useTranslation from 'next-translate/useTranslation'
 import UniversalCookie from 'universal-cookie'
 
-import 'tailwindcss/tailwind.css'
+import 'styles/global.css'
 import '@fontsource/montserrat/400.css'
 import '@fontsource/montserrat/500.css'
 import '@fontsource/montserrat/600.css'
@@ -31,7 +31,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   return (
     <ThemeProvider attribute='class' defaultTheme='dark'>
       <Header />
-      <main className='flex flex-col md:mx-auto md:max-w-4xl lg:max-w-7xl'>
+      <main className='flex flex-1 flex-col md:mx-auto md:max-w-4xl lg:max-w-7xl'>
         <Component {...pageProps} />
       </main>
       <Footer />
