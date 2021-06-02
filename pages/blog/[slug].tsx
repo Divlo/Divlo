@@ -1,9 +1,11 @@
-import { GetServerSideProps } from 'next'
 import path from 'path'
-import { useMemo } from 'react'
 import * as fsWithCallbacks from 'fs'
+
+import { GetServerSideProps } from 'next'
+import { useMemo } from 'react'
 import { bundleMDX } from 'mdx-bundler'
 import { getMDXComponent } from 'mdx-bundler/client'
+import date from 'date-and-time'
 
 import { Head } from 'components/Head'
 
@@ -24,13 +26,17 @@ const BlogPost: React.FC<BlogPostProps> = (props) => {
   return (
     <>
       <Head />
-      <header>
-        <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
-      </header>
-      <main>
-        <Component />
-      </main>
+      <div className='flex flex-col mx-10'>
+        <div className='flex flex-col items-center my-8'>
+          <h1 className='text-3xl font-semibold'>{frontmatter.title}</h1>
+          <p className='mt-2'>
+            {date.format(new Date(frontmatter.createdAt), 'MMMM D, YYYY', true)}
+          </p>
+        </div>
+        <div>
+          <Component />
+        </div>
+      </div>
     </>
   )
 }
@@ -76,6 +82,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     )
   }
   const { code, frontmatter } = await bundleMDX(mdxSource)
+  if (!(frontmatter.isPublished as boolean)) {
+    return redirectNotFound
+  }
   return { props: { code, frontmatter } }
 }
 
